@@ -16,7 +16,7 @@ if st.button("MP3로 변환하기"):
     else:
         st.info("변환 중입니다. 잠시만 기다려주세요...")
         
-        # yt-dlp 설정 옵션
+        # yt-dlp 설정 옵션 (403 에러 방지용 옵션 포함)
         ydl_opts = {
             'format': 'bestaudio/best',
             'outtmpl': 'downloaded_audio.%(ext)s',
@@ -25,6 +25,8 @@ if st.button("MP3로 변환하기"):
                 'preferredcodec': 'mp3',
                 'preferredquality': '192',
             }],
+            'nocheckcertificate': True,
+            'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
             'quiet': True
         }
 
